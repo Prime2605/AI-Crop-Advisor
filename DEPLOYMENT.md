@@ -1,11 +1,37 @@
 # Deployment Guide - AI Crop Advisor
 
+## 🔗 Your Deployment Links
+
+- **Vercel Dashboard**: https://vercel.com/prime-r-ss-projects/crop-advisor
+- **GitHub Repository**: https://github.com/Prime2605/Crop-Advisor
+- **Live Site**: https://crop-advisor-nine.vercel.app
+
+## 📍 Environment Variables Setup
+
+**⚠️ IMPORTANT**: Before deploying, configure environment variables in Vercel.
+
+**See [VERCEL_ENV_SETUP.md](./VERCEL_ENV_SETUP.md) for detailed step-by-step instructions on where to add environment variables in your Vercel dashboard.**
+
+### Quick Reference - Environment Variables:
+
+Go to **Vercel Dashboard → Settings → Environment Variables** and add:
+
+```
+WINDY_POINT_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
+WINDY_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
+WINDY_MAP_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
+SUPABASE_URL=https://tpmpjkfmkdbukusgarkr.supabase.co
+SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwbXBqa2Zta2RidWt1c2dhcmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMjEyMTYsImV4cCI6MjA4MDU5NzIxNn0.Br5Pitq77LnZ09_CHbbLADMiC9p1blCdsPNSutF7KWk
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwbXBqa2Zta2RidWt1c2dhcmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMjEyMTYsImV4cCI6MjA4MDU5NzIxNn0.Br5Pitq77LnZ09_CHbbLADMiC9p1blCdsPNSutF7KWk
+NODE_ENV=production
+```
+
 ## Vercel Deployment Instructions
 
 ### Prerequisites
 1. GitHub/GitLab/Bitbucket account
 2. Vercel account (sign up at https://vercel.com)
-3. MongoDB Atlas account (for production database) or use local MongoDB
+3. Supabase account (for production database) - Already configured!
 
 ### Step 1: Prepare Your Repository
 
@@ -18,19 +44,15 @@
    git push -u origin main
    ```
 
-### Step 2: Set Up MongoDB Database
+### Step 2: Set Up Supabase Database
 
-#### Option A: MongoDB Atlas (Recommended for Production)
+1. Go to your Supabase project: https://tpmpjkfmkdbukusgarkr.supabase.co
+2. Navigate to **SQL Editor** in the left sidebar
+3. Click **New Query**
+4. Copy and paste the contents of `backend/supabase-schema.sql`
+5. Click **Run** to execute the SQL
 
-1. Go to https://www.mongodb.com/cloud/atlas
-2. Create a free cluster
-3. Create a database user
-4. Get your connection string (format: `mongodb+srv://username:password@cluster.mongodb.net/crop-advisor`)
-5. Whitelist your IP address (or use 0.0.0.0/0 for all IPs in development)
-
-#### Option B: Local MongoDB
-
-For local development, MongoDB will run on `mongodb://localhost:27017/crop-advisor`
+This will create all necessary tables. See [SUPABASE_SETUP.md](./SUPABASE_SETUP.md) for detailed instructions.
 
 ### Step 3: Deploy Backend to Vercel
 
@@ -45,13 +67,10 @@ For local development, MongoDB will run on `mongodb://localhost:27017/crop-advis
    - **Install Command**: `npm install`
 
 5. Add Environment Variables in Vercel:
-   - `WINDY_POINT_API_KEY`: `n0HATHjcJTliIOKd3jXeCm440JutQdSN`
-   - `WINDY_API_KEY`: `n0HATHjcJTliIOKd3jXeCm440JutQdSN`
-   - `WINDY_MAP_API_KEY`: `n0HATHjcJTliIOKd3jXeCm440JutQdSN`
-   - `DATABASE_URL`: Your MongoDB connection string
-   - `MONGODB_URI`: Your MongoDB connection string (same as DATABASE_URL)
-   - `NODE_ENV`: `production`
-   - `PORT`: `3001` (or leave empty, Vercel will assign)
+   - Go to **Settings** → **Environment Variables** in your Vercel project
+   - Add all variables listed in the Quick Reference above
+   - Select all environments (Production, Preview, Development) for each variable
+   - See [VERCEL_ENV_SETUP.md](./VERCEL_ENV_SETUP.md) for detailed instructions
 
 6. Deploy!
 
@@ -90,16 +109,18 @@ If you want to deploy both frontend and backend from a single Vercel project:
 
 ### Environment Variables Summary
 
-#### Backend (.env)
+#### Backend (Vercel Environment Variables)
 ```
 WINDY_POINT_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
 WINDY_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
 WINDY_MAP_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
-DATABASE_URL=mongodb+srv://user:pass@cluster.mongodb.net/crop-advisor
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/crop-advisor
+SUPABASE_URL=https://tpmpjkfmkdbukusgarkr.supabase.co
+SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwbXBqa2Zta2RidWt1c2dhcmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMjEyMTYsImV4cCI6MjA4MDU5NzIxNn0.Br5Pitq77LnZ09_CHbbLADMiC9p1blCdsPNSutF7KWk
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwbXBqa2Zta2RidWt1c2dhcmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMjEyMTYsImV4cCI6MjA4MDU5NzIxNn0.Br5Pitq77LnZ09_CHbbLADMiC9p1blCdsPNSutF7KWk
 NODE_ENV=production
-PORT=3001
 ```
+
+**📍 Where to Add**: Vercel Dashboard → Your Project → Settings → Environment Variables
 
 #### Frontend (.env)
 ```

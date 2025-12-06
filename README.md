@@ -9,7 +9,7 @@ A production-quality full-stack web application that provides crop recommendatio
 - **Real-time Weather Data**: Fetches accurate weather data using Windy Point Forecast API
 - **Crop Recommendations**: AI-powered crop suitability analysis with ranked recommendations
 - **AI Dashboard**: Comprehensive analytics dashboard with charts and AI model management
-- **Database Integration**: MongoDB database for storing weather data, recommendations, and analytics
+- **Database Integration**: Supabase (PostgreSQL) database for storing weather data, recommendations, and analytics
 - **Smooth Animations**: Beautiful UI animations powered by Framer Motion
 - **Modern UI**: Clean, responsive interface with tabbed panels and interactive charts
 
@@ -28,8 +28,8 @@ A production-quality full-stack web application that provides crop recommendatio
 - Node.js + Express + TypeScript
 - Axios for external API calls
 - dotenv for environment configuration
-- MongoDB with Mongoose for database
-- Prisma for type-safe database access
+- Supabase (PostgreSQL) for database
+- @supabase/supabase-js for database operations
 
 ## Project Structure
 
@@ -105,10 +105,14 @@ A production-quality full-stack web application that provides crop recommendatio
    WINDY_POINT_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
    WINDY_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
    WINDY_MAP_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
-   DATABASE_URL=mongodb://localhost:27017/crop-advisor
-   MONGODB_URI=mongodb://localhost:27017/crop-advisor
+   SUPABASE_URL=https://tpmpjkfmkdbukusgarkr.supabase.co
+   SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwbXBqa2Zta2RidWt1c2dhcmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMjEyMTYsImV4cCI6MjA4MDU5NzIxNn0.Br5Pitq77LnZ09_CHbbLADMiC9p1blCdsPNSutF7KWk
+   SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwbXBqa2Zta2RidWt1c2dhcmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMjEyMTYsImV4cCI6MjA4MDU5NzIxNn0.Br5Pitq77LnZ09_CHbbLADMiC9p1blCdsPNSutF7KWk
    PORT=3001
    NODE_ENV=development
+   
+   **For Vercel Deployment**: Add these same variables in Vercel Dashboard → Settings → Environment Variables
+   See VERCEL_ENV_SETUP.md for detailed instructions.
    ```
 
 5. Start the development server:
@@ -224,7 +228,7 @@ Access the AI Dashboard by clicking the "AI Dashboard" button in the navbar. The
 - **AI Models**: Manage and monitor AI models
 
 ### Database Integration
-All weather queries and recommendations are automatically saved to MongoDB for:
+All weather queries and recommendations are automatically saved to Supabase (PostgreSQL) for:
 - Historical data analysis
 - Analytics and reporting
 - Model training data
@@ -238,7 +242,13 @@ The UI features smooth animations powered by Framer Motion:
 
 ## Deployment
 
+- **Vercel Dashboard**: https://vercel.com/prime-r-ss-projects/crop-advisor
+- **GitHub Repository**: https://github.com/Prime2605/Crop-Advisor
+- **Live Site**: https://crop-advisor-nine.vercel.app
+
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed Vercel deployment instructions.
+
+**⚠️ IMPORTANT**: Before deploying, configure environment variables in Vercel. See [VERCEL_ENV_SETUP.md](./VERCEL_ENV_SETUP.md) for step-by-step instructions on where to add them.
 
 ## Enhancements
 

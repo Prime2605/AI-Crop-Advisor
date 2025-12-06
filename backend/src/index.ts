@@ -52,16 +52,22 @@ app.use((req, res) => {
 // Initialize database connection
 connectDatabase().catch(console.error);
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
-  
-  if (!process.env.WINDY_POINT_API_KEY && !process.env.WINDY_API_KEY) {
-    console.warn('⚠️  WARNING: WINDY_POINT_API_KEY is not set in environment variables');
-  }
-  
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {
-    console.warn('⚠️  WARNING: Supabase credentials are not set in environment variables');
-  }
-});
+// Only start server if not in Vercel serverless environment
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
+    
+    if (!process.env.WINDY_POINT_API_KEY && !process.env.WINDY_API_KEY) {
+      console.warn('⚠️  WARNING: WINDY_POINT_API_KEY is not set in environment variables');
+    }
+    
+    if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {
+      console.warn('⚠️  WARNING: Supabase credentials are not set in environment variables');
+    }
+  });
+}
+
+// Export for local development
+export default app;
 

@@ -91,6 +91,13 @@ ALTER TABLE analytics ENABLE ROW LEVEL SECURITY;
 
 -- Create policies for public access (adjust based on your security needs)
 -- For development, you can allow all operations
+-- Drop existing policies first to make script idempotent
+DROP POLICY IF EXISTS "Allow all operations on locations" ON locations;
+DROP POLICY IF EXISTS "Allow all operations on weather_data" ON weather_data;
+DROP POLICY IF EXISTS "Allow all operations on recommendations" ON recommendations;
+DROP POLICY IF EXISTS "Allow all operations on ai_models" ON ai_models;
+DROP POLICY IF EXISTS "Allow all operations on analytics" ON analytics;
+
 CREATE POLICY "Allow all operations on locations" ON locations FOR ALL USING (true) WITH CHECK (true);
 CREATE POLICY "Allow all operations on weather_data" ON weather_data FOR ALL USING (true) WITH CHECK (true);
 CREATE POLICY "Allow all operations on recommendations" ON recommendations FOR ALL USING (true) WITH CHECK (true);
@@ -106,6 +113,12 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
+-- Drop existing triggers first to make script idempotent
+DROP TRIGGER IF EXISTS update_locations_updated_at ON locations;
+DROP TRIGGER IF EXISTS update_weather_data_updated_at ON weather_data;
+DROP TRIGGER IF EXISTS update_recommendations_updated_at ON recommendations;
+DROP TRIGGER IF EXISTS update_ai_models_updated_at ON ai_models;
+
 -- Create triggers for updated_at
 CREATE TRIGGER update_locations_updated_at BEFORE UPDATE ON locations
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
@@ -118,4 +131,3 @@ CREATE TRIGGER update_recommendations_updated_at BEFORE UPDATE ON recommendation
 
 CREATE TRIGGER update_ai_models_updated_at BEFORE UPDATE ON ai_models
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-

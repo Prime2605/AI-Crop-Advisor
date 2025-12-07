@@ -23,9 +23,11 @@ For **Backend Deployment**, add these variables:
 
 #### Windy API Keys
 ```
-WINDY_POINT_API_KEY = n0HATHjcJTliIOKd3jXeCm440JutQdSN
-WINDY_API_KEY = n0HATHjcJTliIOKd3jXeCm440JutQdSN
+WINDY_POINT_API_KEY = OEk44lpC9UVAH0dZFKriWWhZTnCzzHS8
 WINDY_MAP_API_KEY = n0HATHjcJTliIOKd3jXeCm440JutQdSN
+WINDY_WEBCAMS_API_KEY = 5b1DAHQSsXDpd0omCdze5FNZwZQyuMId
+WINDY_PLUGINS_API_KEY = FOivatxLurzL1yp0jHmHwrWVRgjcem4M
+WINDY_API_KEY = n0HATHjcJTliIOKd3jXeCm440JutQdSN
 ```
 
 #### Supabase Configuration

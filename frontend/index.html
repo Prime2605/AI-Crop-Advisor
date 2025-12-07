@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Crop Advisor</title>
     <!-- Windy Map API Script -->
-    <!-- Replace YOUR_API_KEY with your actual WINDY_MAP_API_KEY -->
-    <!-- The API key should be set in the backend and passed to frontend via a config endpoint if needed -->
-    <!-- For now, we'll load it from an environment variable or config -->
     <script src="https://api.windy.com/assets/map-forecast/libBoot.js"></script>
+    <!-- Leaflet CSS and JS as fallback -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   </head>
   <body>
     <div id="root"></div>

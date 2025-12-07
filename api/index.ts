@@ -2,11 +2,16 @@
 // This file is at the root level so Vercel can find it automatically
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import weatherRoutes from '../backend/src/routes/weather';
 import cropRecommendRoutes from '../backend/src/routes/cropRecommend';
 import analyticsRoutes from '../backend/src/routes/analytics';
 import aiModelRoutes from '../backend/src/routes/aiModel';
+import configRoutes from '../backend/src/routes/config';
 import { connectDatabase } from '../backend/src/services/database';
+
+// Load environment variables
+dotenv.config();
 
 // Initialize database connection (non-blocking)
 connectDatabase().catch(console.error);
@@ -31,6 +36,7 @@ app.use('/api/weather', weatherRoutes);
 app.use('/api/crop-recommend', cropRecommendRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/ai-models', aiModelRoutes);
+app.use('/api/config', configRoutes);
 
 // Error handling middleware
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {

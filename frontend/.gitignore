@@ -1,6 +1,51 @@
+# ===================================================================
+# FRONTEND .GITIGNORE
+# ===================================================================
+
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
+
+# Build Output
 dist/
 dist-ssr/
+build/
 *.local
-.DS_Store
 
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+coverage/
+
+# Vite
+.vite/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# TypeScript
+*.tsbuildinfo
+
+# Temporary
+.cache/
+.temp/
+*.tmp

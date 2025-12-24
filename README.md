@@ -1,267 +1,395 @@
-# AI Crop Advisor
+# 🌾 AI Crop Advisor
 
-A production-quality full-stack web application that provides crop recommendations based on weather data and location. Built with React + TypeScript (frontend) and Node.js + Express + TypeScript (backend).
+**Premium AI-powered agricultural intelligence platform** with real-time weather data and intelligent crop recommendations.
+
+[![GitHub](https://img.shields.io/badge/GitHub-Prime2605%2FAI--Crop--Advisor-blue)](https://github.com/Prime2605/AI-Crop-Advisor)
+![Tech Stack](https://img.shields.io/badge/React-TypeScript-blue)
+![Node.js](https://img.shields.io/badge/Node.js-Express-green)
+![AI Powered](https://img.shields.io/badge/AI-Powered-gold)
+
+---
+
+## 📋 Table of Contents
+
+- [Features](#-features)
+- [Tech Stack](#️-tech-stack)
+- [Prerequisites](#-prerequisites)
+- [Installation](#-installation-step-by-step)
+- [Configuration](#-configuration)
+- [Running the Application](#-running-the-application)
+- [Usage Guide](#-usage-guide)
+- [Project Structure](#-project-structure)
+- [Features in Detail](#-features-in-detail)
+- [Troubleshooting](#-troubleshooting)
+
+---
 
 ## ✨ Features
 
-- **Interactive Weather Map**: Full-screen Windy Map integration for global weather visualization
-- **Location Selection**: Click anywhere on the map to select a location
-- **Real-time Weather Data**: Fetches accurate weather data using Windy Point Forecast API
-- **Crop Recommendations**: AI-powered crop suitability analysis with ranked recommendations
-- **AI Dashboard**: Comprehensive analytics dashboard with charts and AI model management
-- **Database Integration**: Supabase (PostgreSQL) database for storing weather data, recommendations, and analytics
-- **Smooth Animations**: Beautiful UI animations powered by Framer Motion
-- **Modern UI**: Clean, responsive interface with tabbed panels and interactive charts
+- 🗺️ **Interactive Map** - Click anywhere in the world to get location-specific data
+- 🌤️ **Live Weather Data** - Real-time temperature, humidity, wind, pressure, and precipitation
+- 🌾 **Smart Crop Recommendations** - AI-powered suitability scores for 70+ crops
+- 🤖 **AI Chat Assistant** - Ask questions about farming, crops, and weather impacts
+- 💎 **Premium Design** - Gold & Royal Purple theme with smooth cursor effects
+- 📊 **Live Statistics** - Real-time analytics and predictions
+- 🎨 **Beautiful UI** - Glassmorphism, gradients, and animations
 
-## Tech Stack
+---
+
+## �️ Tech Stack
 
 ### Frontend
-- React 18 + TypeScript
-- Vite (build tool)
-- React Context for state management
-- Axios for API calls
-- Framer Motion for animations
-- Recharts for data visualization
-- Lucide React for icons
+- **React 18** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool
+- **Leaflet** - Interactive maps
+- **CSS3** - Animations & styling
 
 ### Backend
-- Node.js + Express + TypeScript
-- Axios for external API calls
-- dotenv for environment configuration
-- Supabase (PostgreSQL) for database
-- @supabase/supabase-js for database operations
+- **Node.js** - Runtime
+- **Express** - Web framework
+- **TypeScript** - Type safety
+- **Supabase** - PostgreSQL database
 
-## Project Structure
+### APIs
+- **GitHub Models API** - AI chat
+- **OpenWeather API** - Weather data
+- **Leaflet/OSM** - Map tiles
 
-```
-.
-├── backend/
-│   ├── src/
-│   │   ├── index.ts              # Express server entry point
-│   │   ├── routes/               # API route handlers
-│   │   │   ├── weather.ts
-│   │   │   └── cropRecommend.ts
-│   │   ├── services/             # Business logic
-│   │   │   ├── weatherService.ts
-│   │   │   └── cropService.ts
-│   │   └── types/                # TypeScript type definitions
-│   │       └── index.ts
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── .env.example
-│
-└── frontend/
-    ├── src/
-    │   ├── components/           # React components
-    │   │   ├── Navbar.tsx
-    │   │   ├── WindyMap.tsx
-    │   │   ├── SidePanel.tsx
-    │   │   ├── WeatherTab.tsx
-    │   │   └── CropRecommendationsTab.tsx
-    │   ├── context/              # React Context for state
-    │   │   └── AppContext.tsx
-    │   ├── hooks/                # Custom React hooks
-    │   │   └── useWeather.ts
-    │   ├── services/             # API service layer
-    │   │   └── api.ts
-    │   ├── types/                # TypeScript types
-    │   │   └── index.ts
-    │   ├── App.tsx
-    │   ├── main.tsx
-    │   └── index.css
-    ├── index.html
-    ├── package.json
-    ├── tsconfig.json
-    └── vite.config.ts
+---
+
+## 📦 Prerequisites
+
+Before you begin, ensure you have:
+
+1. **Node.js** (v18 or higher)
+   - Download from [nodejs.org](https://nodejs.org/)
+   - Verify: `node --version`
+
+2. **pnpm** (recommended) or npm
+   - Install pnpm: `npm install -g pnpm`
+   - Verify: `pnpm --version`
+
+3. **Git** (for cloning)
+   - Download from [git-scm.com](https://git-scm.com/)
+   - Verify: `git --version`
+
+4. **API Keys** (free to obtain):
+   - GitHub Models token
+   - OpenWeather API key
+   - Supabase credentials
+
+---
+
+## 📥 Installation (Step-by-Step)
+
+### Step 1: Clone the Repository
+
+```bash
+git clone <your-repo-url>
+cd Crop-Advisor
 ```
 
-## Setup Instructions
+### Step 2: Install Backend Dependencies
 
-### Prerequisites
-- Node.js 18+ and npm
-- Windy API keys:
-  - `WINDY_POINT_API_KEY` (for weather data)
-  - `WINDY_MAP_API_KEY` (for map display)
+```bash
+cd backend
+pnpm install
+```
 
-### Backend Setup
+**Expected output:** Dependencies installed successfully
 
-1. Navigate to the backend directory:
+### Step 3: Install Frontend Dependencies
+
+```bash
+cd ../frontend
+pnpm install
+```
+
+**Expected output:** Dependencies installed successfully
+
+---
+
+## ⚙️ Configuration
+
+### Step 4: Set Up Environment Variables
+
+#### Backend Configuration
+
+1. Navigate to the `backend` folder:
    ```bash
    cd backend
    ```
 
-2. Install dependencies:
+2. Create a `.env` file:
    ```bash
-   npm install
-   ```
-
-3. Create a `.env` file (copy from `.env.example`):
-   ```bash
+   # Windows
+   copy .env.example .env
+   
+   # Linux/Mac
    cp .env.example .env
    ```
 
-4. Edit `.env` and add your configuration:
-   ```
-   WINDY_POINT_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
-   WINDY_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
-   WINDY_MAP_API_KEY=n0HATHjcJTliIOKd3jXeCm440JutQdSN
-   SUPABASE_URL=https://tpmpjkfmkdbukusgarkr.supabase.co
-   SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwbXBqa2Zta2RidWt1c2dhcmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMjEyMTYsImV4cCI6MjA4MDU5NzIxNn0.Br5Pitq77LnZ09_CHbbLADMiC9p1blCdsPNSutF7KWk
-   SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwbXBqa2Zta2RidWt1c2dhcmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMjEyMTYsImV4cCI6MjA4MDU5NzIxNn0.Br5Pitq77LnZ09_CHbbLADMiC9p1blCdsPNSutF7KWk
-   PORT=3001
-   NODE_ENV=development
+3. Edit `.env` and add your API keys:
+   ```env
+   # AI Configuration
+   GITHUB_MODELS_TOKEN=your_github_models_token_here
    
-   **For Vercel Deployment**: Add these same variables in Vercel Dashboard → Settings → Environment Variables
-   See VERCEL_ENV_SETUP.md for detailed instructions.
+   # Weather API
+   OPENWEATHER_API_KEY=your_openweather_api_key_here
+   
+   # Database
+   SUPABASE_URL=your_supabase_project_url_here
+   SUPABASE_KEY=your_supabase_anon_key_here
+   
+   # Server
+   PORT=3001
    ```
 
-5. Start the development server:
+### Step 5: Get Your API Keys
+
+#### 5.1 GitHub Models Token
+1. Go to [GitHub Settings](https://github.com/settings/tokens)
+2. Click "Generate new token (classic)"
+3. Select scopes: `repo`, `read:user`
+4. Copy token and paste in `.env`
+
+#### 5.2 OpenWeather API Key
+1. Go to [OpenWeather](https://openweathermap.org/api)
+2. Sign up for free account
+3. Go to API Keys section
+4. Copy API key and paste in `.env`
+
+#### 5.3 Supabase Credentials
+1. Go to [Supabase](https://supabase.com/)
+2. Create new project
+3. Go to Settings → API
+4. Copy URL and anon key
+5. Paste in `.env`
+
+---
+
+## 🚀 Running the Application
+
+### Step 6: Start the Backend Server
+
+1. Open **Terminal 1**:
    ```bash
-   npm run dev
+   cd backend
+   pnpm run dev
    ```
 
-   The backend will run on `http://localhost:3001`
+2. **Expected output:**
+   ```
+   ✓ Server running on http://localhost:3001
+   ✓ AI service initialized
+   ✓ Weather API connected
+   ```
 
-### Frontend Setup
+3. Keep this terminal running!
 
-1. Navigate to the frontend directory:
+### Step 7: Start the Frontend Server
+
+1. Open **Terminal 2** (new terminal window):
    ```bash
    cd frontend
+   pnpm run dev
    ```
 
-2. Install dependencies:
-   ```bash
-   npm install
+2. **Expected output:**
+   ```
+   ✓ Local:   http://localhost:3000
+   ✓ Network: use --host to expose
    ```
 
-3. The Windy API key is configured in the backend environment variables
-   - The Windy Map script is loaded in `index.html`
-   - API key is automatically used by the backend service
+3. Keep this terminal running!
 
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
+### Step 8: Open in Browser
 
-   The frontend will run on `http://localhost:3000`
+1. Open your browser
+2. Navigate to: `http://localhost:3000`
+3. **You should see:** The AI Crop Advisor dashboard with a golden-purple theme!
 
-## API Endpoints
+---
 
-### Backend API
+## � Usage Guide
 
-#### Core Endpoints
-- `GET /api/health` - Health check endpoint
-- `GET /api/weather?lat={lat}&lon={lon}` - Fetch weather data for a location
-- `POST /api/crop-recommend` - Get crop recommendations
-  ```json
-  {
-    "location": { "lat": 50.4, "lon": 14.3 },
-    "weather": {
-      "temperature": 20,
-      "precipitation": 50,
-      "humidity": 60,
-      "windSpeed": 5
-    }
-  }
-  ```
+### Using the Dashboard
 
-#### Analytics Endpoints
-- `GET /api/analytics/dashboard` - Get dashboard analytics data
-- `GET /api/analytics/crop-performance` - Get crop performance metrics
-- `POST /api/analytics/event` - Record analytics event
+#### 1. Select a Location
+- **Method 1:** Click anywhere on the map
+- **Method 2:** Use the search bar (top-left)
+- **Method 3:** Drag the marker to move it
 
-#### AI Model Endpoints
-- `GET /api/ai-models` - Get all AI models
-- `GET /api/ai-models/:id` - Get specific AI model
-- `POST /api/ai-models` - Create new AI model
-- `PUT /api/ai-models/:id` - Update AI model
-- `DELETE /api/ai-models/:id` - Delete AI model
+#### 2. View Weather Data (Left Panel)
+- Real-time temperature
+- Humidity percentage
+- Wind speed
+- Atmospheric pressure
+- Precipitation levels
+- Current location coordinates
 
-## Windy API Integration Notes
+#### 3. View Crop Recommendations (Right Panel)
+- **Top crops** suitable for selected location
+- **Suitability score** (0-100%)
+- **Crop icons** for visual identification
+- Scientific names for each crop
 
-### Windy Point Forecast API
-- The backend uses the Windy Point Forecast API to fetch weather data
-- API key is stored in `WINDY_POINT_API_KEY` environment variable
-- The service layer (`weatherService.ts`) handles API calls and data transformation
-- **Important**: Verify the actual Windy API endpoint URL and request format in the official documentation, as the current implementation uses placeholder structures
+#### 4. Use AI Chat Assistant
+1. Click **"🤖 AI Chat Assistant"** button (top-right)
+2. Chat panel slides in from right
+3. Type your question (e.g., "What crops grow well in hot weather?")
+4. Press Enter or click "Send"
+5. AI responds with helpful advice
 
-### Windy Map API
-- The frontend loads the Windy Map script from `https://api.windy.com/assets/map-forecast/libBoot.js`
-- Map initialization happens in the `WindyMap` component
-- **Important**: The Windy Map API initialization code may need adjustment based on the actual API documentation. The current implementation provides a structure that should be adapted to the real API.
+#### 5. View AI Predictions (Bottom-right)
+- Best crops for current conditions
+- Temperature optimization insights
+- Humidity-based recommendations
 
-## Development Commands
+---
 
-### Backend
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build for production
-- `npm start` - Run production build
-- `npm run type-check` - Type check without building
+## 📁 Project Structure
 
-### Frontend
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run type-check` - Type check without building
+```
+Crop-Advisor/
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── index.ts          # API configuration
+│   │   ├── services/
+│   │   │   ├── ai.ts             # AI chat service
+│   │   │   └── weather.ts        # Weather API service
+│   │   └── index.ts              # Express server
+│   ├── .env                      # Environment variables
+│   └── package.json
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Dashboard3D.tsx   # Main dashboard
+│   │   │   ├── CursorTrail.tsx   # Cursor effects
+│   │   │   └── [others]
+│   │   ├── api/
+│   │   │   └── index.ts          # API calls
+│   │   ├── dashboard-unified.css # Main styles
+│   │   ├── chat-panel.css        # Chat styles
+│   │   ├── cursor-effects.css    # Cursor styles
+│   │   └── App.tsx               # Root component
+│   └── package.json
+│
+└── README.md                     # This file
+```
 
-## Testing the Application
+---
 
-1. Start both backend and frontend servers
-2. Open `http://localhost:3000` in your browser
-3. Click anywhere on the map to select a location
-4. Weather data will automatically load in the Weather tab
-5. Crop recommendations will appear in the Crop Recommendations tab
-6. Use the sortable table headers to sort crops by different criteria
+## 🎯 Features in Detail
 
-## Important Notes
+### Interactive Map
+- **Technology:** Leaflet.js with OpenStreetMap tiles
+- **Controls:** 
+  - Pan: Click and drag
+  - Zoom: Scroll wheel or +/- buttons
+  - Select: Click to place marker
+- **Features:** Draggable marker, smooth animations
 
-- **API Keys**: Never commit API keys to version control. Always use environment variables.
-- **Windy API**: The Windy API integration code includes placeholders that should be verified against the official documentation.
-- **Crop Recommendations**: The current crop recommendation service uses simple heuristics. In production, this should be replaced with ML models or expert systems.
+### AI Chat
+- **Powered by:** GitHub Models API
+- **Capabilities:** 
+  - Crop recommendations
+  - Weather impact analysis
+  - Growing tips
+  - Yield optimization
+- **UI:** Slide-in panel with message history
 
-## New Features
+### Crop Database
+- **70+ crops** with detailed information
+- **Icons:** Beautiful emoji representation
+- **Suitability scoring:** AI-calculated percentages
+- **Categories:** Vegetables, grains, fruits, legumes, cash crops
 
-### AI Dashboard
-Access the AI Dashboard by clicking the "AI Dashboard" button in the navbar. The dashboard includes:
-- **Overview**: Key metrics and statistics
-- **Analytics**: Interactive charts and visualizations
-- **AI Models**: Manage and monitor AI models
+### Design System
+- **Primary Color:** Metallic Gold (#D4AF37)
+- **Accent Color:** Royal Purple (#6A0DAD)
+- **Background:** Deep Black (#000000)
+- **Effects:** 
+  - Smooth cursor trail
+  - Hover glows
+  - Card animations
+  - Gradient borders
 
-### Database Integration
-All weather queries and recommendations are automatically saved to Supabase (PostgreSQL) for:
-- Historical data analysis
-- Analytics and reporting
-- Model training data
+---
 
-### Animations
-The UI features smooth animations powered by Framer Motion:
-- Page transitions
-- Card hover effects
-- Loading animations
-- Staggered list animations
+## 🐛 Troubleshooting
 
-## Deployment
+### Backend won't start
+**Problem:** Port 3001 already in use  
+**Solution:** 
+```bash
+# Windows
+netstat -ano | findstr :3001
+taskkill /PID <PID> /F
 
-- **Vercel Dashboard**: https://vercel.com/prime-r-ss-projects/crop-advisor
-- **GitHub Repository**: https://github.com/Prime2605/Crop-Advisor
-- **Live Site**: https://crop-advisor-nine.vercel.app
+# Linux/Mac
+lsof -i :3001
+kill -9 <PID>
+```
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed Vercel deployment instructions.
+### Frontend shows blank page
+**Problem:** Backend not running  
+**Solution:** Ensure backend is running on port 3001
 
-**⚠️ IMPORTANT**: Before deploying, configure environment variables in Vercel. See [VERCEL_ENV_SETUP.md](./VERCEL_ENV_SETUP.md) for step-by-step instructions on where to add them.
+### Map not loading
+**Problem:** Leaflet CSS not loaded  
+**Solution:** Clear browser cache and refresh
 
-## Enhancements
+### AI Chat not responding
+**Problem:** Invalid GitHub token  
+**Solution:** Check `.env` file for correct `GITHUB_MODELS_TOKEN`
 
-See [ENHANCEMENTS.md](./ENHANCEMENTS.md) for a complete list of enhancements and features.
+### Weather data not showing
+**Problem:** Invalid API key  
+**Solution:** Verify `OPENWEATHER_API_KEY` in `.env`
 
-## Next Steps
+---
 
-1. ✅ Windy API integration completed
-2. ✅ Database integration completed
-3. ✅ AI Dashboard created
-4. ✅ Animations added
-5. ⏳ Add error boundaries for better error handling
-6. ⏳ Implement caching for weather data
-7. ⏳ Add unit and integration tests
-8. ⏳ Deploy to Vercel (see DEPLOYMENT.md)
+## 🔧 Development Commands
 
+```bash
+# Backend
+cd backend
+pnpm run dev          # Start dev server
+pnpm run build        # Build for production
+pnpm run start        # Start production server
+
+# Frontend  
+cd frontend
+pnpm run dev          # Start dev server
+pnpm run build        # Build for production
+pnpm run preview      # Preview production build
+```
+
+---
+
+## 📝 License
+
+MIT License - feel free to use for personal or commercial projects!
+
+---
+
+## 🙏 Credits
+
+- **Weather Data:** [OpenWeather API](https://openweathermap.org/)
+- **AI:** [GitHub Models](https://github.com/marketplace/models)
+- **Maps:** [Leaflet](https://leafletjs.com/) + [OpenStreetMap](https://www.openstreetmap.org/)
+- **Icons:** Emoji
+
+---
+
+## 🎉 Enjoy!
+
+**Your AI Crop Advisor is now ready to use!** 🌾✨
+
+For issues or questions, check the [Troubleshooting](#-troubleshooting) section above.
+
+**Happy Farming!** 🚜

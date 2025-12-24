@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { WeatherData, CropRecommendation, Location } from '../types';
 
-const API_BASE = '/api';
+const API_BASE = import.meta.env.PROD ? '/api' : 'http://localhost:3001/api';
 
 // Fetch frontend config (includes Windy Map API key)
 export async function getConfig(): Promise<{ windyMapApiKey: string }> {

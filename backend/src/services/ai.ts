@@ -18,20 +18,20 @@ let workingModel: string | null = null;
  * Test GitHub Models API connection on startup
  */
 export async function testConnection(): Promise<boolean> {
-    if (!config.ai.token) {
-        console.log('⚠️ AI: No token configured, using fallbacks');
+    if (!config.github.token) {
+        console.log('⚠️  AI: No token configured, using fallbacks');
         return false;
     }
 
-    for (const model of config.ai.models) {
+    for (const model of config.github.models) {
         try {
-            const res = await axios.post(config.ai.endpoint, {
+            const res = await axios.post(config.github.endpoint, {
                 model,
                 messages: [{ role: 'user', content: 'Hi' }],
                 max_tokens: 5,
             }, {
                 headers: {
-                    'Authorization': `Bearer ${config.ai.token}`,
+                    'Authorization': `Bearer ${config.github.token}`,
                     'Content-Type': 'application/json',
                 },
                 timeout: 10000,
@@ -47,7 +47,7 @@ export async function testConnection(): Promise<boolean> {
         }
     }
 
-    console.log('⚠️ AI unavailable, using fallback responses');
+    console.log('⚠️  AI unavailable, using fallback responses');
     return false;
 }
 
@@ -60,7 +60,7 @@ export async function chat(question: string): Promise<string> {
     }
 
     try {
-        const res = await axios.post(config.ai.endpoint, {
+        const res = await axios.post(config.github.endpoint, {
             model: workingModel,
             messages: [
                 { role: 'system', content: 'You are an expert agricultural AI advisor. Provide concise, helpful advice about crops, farming, and agriculture.' },
@@ -70,7 +70,7 @@ export async function chat(question: string): Promise<string> {
             max_tokens: 1024,
         }, {
             headers: {
-                'Authorization': `Bearer ${config.ai.token}`,
+                'Authorization': `Bearer ${config.github.token}`,
                 'Content-Type': 'application/json',
             },
             timeout: 20000,
@@ -110,7 +110,7 @@ Respond with ONLY a JSON array (no markdown, no explanation):
 [{"name":"Rice","scientificName":"Oryza sativa","suitability":95,"reason":"Perfect for warm humid climate with high rainfall"}]`;
 
     try {
-        const res = await axios.post(config.ai.endpoint, {
+        const res = await axios.post(config.github.endpoint, {
             model: workingModel,
             messages: [
                 { role: 'system', content: 'You are an agricultural expert. Respond with ONLY a valid JSON array of crop recommendations. No markdown formatting, no explanations.' },
@@ -120,7 +120,7 @@ Respond with ONLY a JSON array (no markdown, no explanation):
             max_tokens: 1500,
         }, {
             headers: {
-                'Authorization': `Bearer ${config.ai.token}`,
+                'Authorization': `Bearer ${config.github.token}`,
                 'Content-Type': 'application/json',
             },
             timeout: 20000,

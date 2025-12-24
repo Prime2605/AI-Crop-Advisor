@@ -47,7 +47,7 @@ export function logConfigStatus(): void {
     console.log(`   Windy Point API: ${config.windy.pointKey ? '✅' : '❌'}`);
     console.log(`   Weather API: ${config.weatherApi.key ? '✅' : '❌'}`);
     console.log(`   Supabase: ${config.supabase.url ? '✅' : '❌'}`);
-    console.log(`   GitHub Models AI: ${config.ai.token ? '✅' : '❌'}`);
+    console.log(`   GitHub Models AI: ${config.github.token ? '✅' : '❌'}`);
     console.log('========================\n');
 }
 

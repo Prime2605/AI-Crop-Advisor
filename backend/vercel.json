@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "crop-advisor-backend",
   "builds": [
     {
       "src": "src/index.ts",
@@ -9,11 +8,8 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/src/index.ts"
+      "src": "/(.*)",
+      "dest": "src/index.ts"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }

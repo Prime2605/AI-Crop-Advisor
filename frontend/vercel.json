@@ -1,9 +1,7 @@
 {
   "version": 2,
-  "name": "crop-advisor-frontend",
   "framework": "vite",
-  "buildCommand": "pnpm run build",
+  "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "installCommand": "pnpm install",
-  "devCommand": "pnpm run dev"
+  "installCommand": "npm install"
 }

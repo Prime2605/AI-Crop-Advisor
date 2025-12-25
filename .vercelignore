@@ -1,0 +1,9 @@
+# Vercel ignore - exclude from deployment
+node_modules
+.git
+*.log
+.env.local
+.DS_Store
+backend/
+GIT_PUSH_GUIDE.md
+VERCEL_DEPLOYMENT.md

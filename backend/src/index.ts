@@ -158,4 +158,10 @@ async function start() {
     });
 }
 
-start().catch(console.error);
+// Only start server in development (not on Vercel)
+if (process.env.NODE_ENV !== 'production') {
+    start().catch(console.error);
+}
+
+// Export for Vercel serverless
+export default app;
